@@ -1,0 +1,5 @@
+Group_id -> ua.pt.ies.labxx       (lab atual)
+Artifact_id-> nome da app       
+
+mvn package #sempre --compilar projeto (estar sempre no caminho certo)
+mvn exec:java -Dexec.mainClass="weather.WeatherStarter" #mudar o weather para o nome do package e o WeatherStarter para o nome da classe main
