@@ -14,6 +14,7 @@ public class WeatherStarter {
 
     //todo: should generalize for a city passed as argument
     private static final int CITY_ID_AVEIRO = 1010500;
+    private static int CITY_ID_;
 
     public static void  main(String[] args ) {
 
@@ -25,8 +26,13 @@ public class WeatherStarter {
 
         // create a typed interface to use the remote API (a client)
         IpmaService service = retrofit.create(IpmaService.class);
+
+        CITY_ID_ = Integer.parseInt(args[0]);
+        
         // prepare the call to remote endpoint
-        Call<IpmaCityForecast> callSync = service.getForecastForACity(CITY_ID_AVEIRO);
+        //Call<IpmaCityForecast> callSync = service.getForecastForACity(CITY_ID_AVEIRO);
+        Call<IpmaCityForecast> callSync = service.getForecastForACity(CITY_ID_);
+
 
         try {
             Response<IpmaCityForecast> apiResponse = callSync.execute();
