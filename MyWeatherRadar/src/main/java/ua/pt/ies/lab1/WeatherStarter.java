@@ -6,6 +6,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import ua.pt.ies.lab1.IpmaCityForecast; //may need to adapt package name
 import ua.pt.ies.lab1.IpmaService;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * demonstrates the use of the IPMA API for weather forecast
@@ -15,6 +17,8 @@ public class WeatherStarter {
     //todo: should generalize for a city passed as argument
     private static final int CITY_ID_AVEIRO = 1010500;
     private static int CITY_ID_;
+    private static Logger logger = LogManager.getLogger(WeatherStarter.class);
+
 
     public static void  main(String[] args ) {
 
@@ -28,6 +32,11 @@ public class WeatherStarter {
         IpmaService service = retrofit.create(IpmaService.class);
 
         CITY_ID_ = Integer.parseInt(args[0]);
+
+        logger.debug("Debug log message");
+        logger.info("Info log message");
+        logger.error("Error log message");
+        
         
         // prepare the call to remote endpoint
         //Call<IpmaCityForecast> callSync = service.getForecastForACity(CITY_ID_AVEIRO);
