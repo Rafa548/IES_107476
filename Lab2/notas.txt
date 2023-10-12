@@ -1,0 +1,5 @@
+ex 2.2 tem o docker-compose.yml no github do link
+
+seguir instruçoes do website
+
+dar docker compose up #opcional -d

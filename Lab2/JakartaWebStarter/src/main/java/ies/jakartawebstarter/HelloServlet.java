@@ -1,6 +1,8 @@
 package ies.jakartawebstarter;
 
 import java.io.*;
+
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
@@ -12,16 +14,33 @@ public class HelloServlet extends HttpServlet {
         message = "Hello World!";
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
-
-        // Hello
+    @Override
+    protected void doGet(HttpServletRequest request,
+                         HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("</body></html>");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        boolean success = validateUser(username, password);
+        try {
+            // Write some content
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>LoginServlet</title>");
+            out.println("</head>");
+            out.println("<body>");
+            if(success) {
+                out.println("<h2>Welcome Friend</h2>");
+            }else{
+                out.println("<h2>Validate your self again.</h2>");
+            }
+            out.println("</body>");
+            out.println("</html>");
+        } finally {
+            out.close();
+        }
     }
-
-    public void destroy() {
+    public boolean validateUser(String us,String pass){
+        return true;
     }
 }
