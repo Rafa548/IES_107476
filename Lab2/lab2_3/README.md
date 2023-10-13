@@ -16,7 +16,7 @@ These templates significantly simplify the setup of the Project Object Model (PO
 To change or add a port setting for your Spring Boot application, navigate to the `src/main/resources/application.properties` file and modify the following line:
 
 ```properties
-   server.port=8080  # Default port
+server.port=8080  # Default port
 ```
 
 Web Controllers: Handling HTTP Requests
@@ -28,5 +28,5 @@ In Spring's web development approach, HTTP requests are managed by controllers. 
 To run your Spring Boot project, use the following command:
 
 ```bash
-   ./mvnw spring-boot:run
+./mvnw spring-boot:run
 ```

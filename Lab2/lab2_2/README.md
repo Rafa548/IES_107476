@@ -11,11 +11,17 @@
 2. The source code for the application is hosted on GitHub at [https://github.com/IdeaUJetBrains/Tomcat_docker_debug](https://github.com/IdeaUJetBrains/Tomcat_docker_debug). You only need the `docker-compose.yaml` file.
 
 3. Continue to follow the guide to build the .war file (your application packaged as a Web Archive). Alternatively, you can run the following command:
-$ mvn install
+```bash
+mvn install
+```
+
 
 
 4. After completing the steps above, run the following command:
+```bash
 docker-compose up
+```
+
 
 (Note: You may need to use `sudo` for this step.)
 
@@ -23,5 +29,5 @@ docker-compose up
 
 1. Open your web browser and navigate to the following page:
 [http://127.0.0.1:8888/JakartaWebStarter-1.0-SNAPSHOT/hello-servlet](http://127.0.0.1:8888/JakartaWebStarter-1.0-SNAPSHOT/hello-servlet)
-(You can optionally include a `?username=` parameter.)
+   (You can optionally include a `?username=` parameter.)
 
