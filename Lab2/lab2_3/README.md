@@ -1,23 +1,32 @@
 # Lab 2.3 Notes
 
-## Spring Boot
-Spring Boot is an application development platform that assumes opionated choices by default, thus allowing you to get started with minumum effort and create stand-alone, production-grade applications. It's serves it's purpose prioritizing convention over configuration.
+## Spring Boot: A Quick Overview
 
-### Spring Initializr
-Spring Initializr templates contain a collection of all
-the relevant transitive dependencies that are needed to start a particular functionality and will
-simplify the setup of the POM.
+Spring Boot is a robust application development platform designed to streamline the development process by providing opinionated defaults. 
+This approach allows developers to start with minimal effort and create standalone, production-ready applications. 
+Spring Boot prioritizes convention over configuration, making it an excellent choice for many applications.
 
-### Change the app port
-Change (or add) this  setting in the *src/main/resources/application.preferences* file:
+## Spring Initializr: Simplifying Dependency Management
+
+Spring Initializr templates include a curated set of transitive dependencies necessary to kickstart specific functionalities. 
+These templates significantly simplify the setup of the Project Object Model (POM) for your project.
+
+## Customizing the Application Port
+
+To change or add a port setting for your Spring Boot application, navigate to the `src/main/resources/application.properties` file and modify the following line:
+
+```properties
+   server.port=8080  # Default port
 ```
-server.port=8080            #default port
+
+Web Controllers: Handling HTTP Requests
+
+In Spring's web development approach, HTTP requests are managed by controllers. These controllers handle the incoming requests and execute appropriate actions in your application.
+
+##Running the Project
+
+To run your Spring Boot project, use the following command:
+
+```bash
+   ./mvnw spring-boot:run
 ```
-
-### Web Controllers
-In Spring’s approach to building web sites, HTTP requests are handled by a controller.
-
-### Run the project
-    ```
-         ./mvnw spring-boot:run
-    ```
