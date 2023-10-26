@@ -1,0 +1,8 @@
+a) The UserController class receives an instance of UserRepository through its constructor via dependency injection. The @Autowired annotation is used to 
+indicate that Spring should automatically inject a suitable instance of UserRepository into the UserController when it is instantiated
+
+b) The UserRepository interface extends CrudRepository, which provides a set of standard CRUD (Create, Read, Update, Delete) methods for working with the User entity
+
+c) The data is stored in the tables of the configured database. For example we have a table named tbl_user (as defined by @Entity(name = "tbl_user") in the User class), and data from the User entities are stored in this table
+
+d) The rule for ensuring that the "email" field is not empty is defined using the @NotBlank annotation
