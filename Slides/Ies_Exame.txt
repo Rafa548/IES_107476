@@ -1,0 +1,433 @@
+Slide 1
+
+Maven->project management tool
+  ->project object model
+  ->standarts
+  ->lifecycle
+  ->dependency
+
+convention over configuration !!!!
+
+layout standard 
+POM-decriçao de como dar build (dependencias etc)
+src-todo o material do projeto
+target-resultado das build normalmente jars
+
+Baseia-se no POM (project object model)
+O POM é declarativo
+
+mvn compile e mvn package "instala todas as dependencias"  !!!!!!!
+
+Maven coordinates
+
+groupID,artifactID and version os tres grandes do maven
+
+groupID> Nome da companhia etc
+artifactD> nome unico do projeto para a respetiva companhia
+
+Maven lifecycle (Normalmente clean (opcional),compile,package,install,deploy)
+compile-> .class files
+package-> jar files
+install-> passa o code para o maven rep local
+deploy-> manda para a cloud
+
+Archetype (templates do maven para criar novo proj fast)
+
+Dependency Management
+
+mudar cenas no pom.xml e o maven (se correto faz o download e a instalaçao automatico)
+
+
+git init (começar novo rep)
+git add file1 file2 (add para o commit)
+git commit -m "mensagem" (adiciona o commit ao rep local) (o -m é desnecessario)
+git push (manda para a cloud)
+git status (ver aas diffs)
+
+Slide 2
+
+Software process é um guia (muitos têm caracteristicas similares)
+
+muda dependendo da situaçao 
+aplicado corretamente deve ajudar a produtividade de membros da equipa com menos experiencia sem impedir o progresso
+de membros mais experientes
+
+Algumas pessoas nao gostam destes metodos e muitas vezes nao os queres usar, mas eventualmente ao aumentar o tamanho e a
+complexidade dos projetos estes acabam por ser necessarios
+
+Modelos especificos
+
+Waterfall
+
+diversas fases de desenvolvimento (são feitas uma a uma)
+
+pros
+facil de gerir e planear
+
+contras
+nao se volta atras estando uma fase terminada (dificil fazer mudanças)
+o cliente apenas diz oq quer no inicio e recebe o que pediu no fim
+o produto so é usavel no fim
+
+
+Incremental (modelo agil)
+
+evoluçao incremental atraves de uma serie de etapas
+isto é os requisitos sao divididos e e cada iteraçao implementados total e sucessivamente
+(ou seja uma fase de cada vez, um pouco dessa fase de cada vez e testa-se)
+
+pros
+entrega+ rapida
+o cliente ve mais vezes o produto
+mais facil alterar alguma coisa
+
+contras
+é um mini waterfall em cada iteraçao
+nao existe sobreposiçao de iteraçoes, todas as equipas têm de entrar
+mal gerido = iteraçoes infinitas
+
+
+Iterativo (agil)
+
+requisitos sao implementados parcialmente em cada iteraçao
+(isto é fica um pouco de tudo feito em cada iteraçao e melhoras podem acontecer na proxima)
+
+
+Modelo incremental vs iterativo
+
+O Modelo incremental foca-se em dividir o problema em varias partes e focar em cada parte individualmente por varias
+iteraçoes entregues no fim completas e funcionais
+
+Enquanto o modelo iterativo foca-se em fazer em cada iteraçao fazendo um pouco de tudo e indo
+melhorando o que ja se encontra feito
+
+Exemplo de uma casa (incremental fazer um quarto, iterativo fazer um pouco da estrutura,das janelas etc..)
+
+COTS (baseia-se na reutilizaçao de coisas, no nosso caso codigo)
+Metodos formais (modelos matematicos)
+AOSD(desenvolvimento de aspetos)
+Unified Process (Foco em use cases)
+
+
+Tipos de modelos de processos de software
+
+Plan-driven (modelos preditivos) (bom quando temos a certeza dos requisitos e nao vai haver alteraçoes)
+
+Modelos ageis (planeamento incremental as coisas vao sendo decididas)
+
+falta o fim da pag 12 aqui ver dnv (Resumo)
+!!!!!!!!!!!!!!!!!!!!!!!!!
+
+----------------------------------------------------
+
+Slide 3
+
+planeamento, design, código e testes-> fazes de metodos ageis
+
+-----------
+
+Slide 4
+
+Metodologia agile
+
+o projeto é dividido em varias iteraçoes, a duraçao das mesmas deve ser igual, no fim de cada iteraçao deve ser entregue um projeto funcional
+
+
+Limitaçoes de agile
+
+problema entre a dev team and the ops team, isto é muitas vezes o produto desenvolvido localmente precisa de diversas alteraçoes antes de ser deployed
+
+em caso de problemas a team de operaçoes argumenta que o codigo da dev team nao funciona
+a dev team argumenta que nos ambientes deles funcionava perfeitamente
+e entra-se num ciclo de culpa infinita sem saber onde se origina o problema
+
+Foram entao criadas as equipas devops que trata de ambas as resposabilidades isto é de fazer e dar deploy do codigo
+
+isto na pratica significa que a pessoa que fez o codigo dê deploy do mesmo, tambem nao significa que o mesmo nao accontece apenas promove uma proximidadde maior de forma a nao existirem esses problemas
+
+De qualquer forma a equipa deve ter full ownership dos serviços, focando-se numa relaçao de comunicaçao
+
+Ciclo de desenvolvimento (bullshit preetty much, final de pag 20 do resumo)
+
+IaC(infrastructue as code) gestao de infrasesrutura atraves do codigo, mais faciliade de (re)configuraçao, analise e validaçao atraves de mecaismos de aautomatizaçao
+
+Integraçao continua (muito importante deve acontecer ao longo do desenvolvimento todo)
+
+isto é qualquer mudança deve ser refletida o mais rapido possivel no codigo da equipa de forma a existir sincronizaçao constante dessa forma é facil a deteçao atempade de erros e a reduçao da intervençao manual, uma vez que isto pode ser automatizado
+
+O controlo de versoes é uma boa pratica, um merge diario, e usar branches de curta duraçao é o ideal
+
+A configuraçao ao nivel da construçao tambem é importante, deve ser garantido que os scripts/programas sao independentes do IDE onde sao gerados, uma build a cada alteraçao e sem limites de violaçoes
+
+A politica da equipa deve seguir os principios do desenvolvimento agil
+
+CI Server (exemplo do jenkins que da deploy automatico para o servidor de testes a equipa é notificada ase der algum erro)
+
+Entrega continua (ponte entre o desenvolvimento e a operaçao)
+
+Varios estrategias para realizaar os testes de aceitaçao, podem ser feitos antes ou durante a produçao
+
+Eat your own food (testes internos feitos pelos func da empresa)
+Canary releases (release para poucos users (apenas representativos))
+Dark launches (semelhante ao ded cima mas useers nao sabem que estao a ser testados)
+Gradual rollouts (fazer release a um numero gradualmnete maior de users)
+A/B Testing (metades dos users levam com o release sem saberem que estao a ser testados)
+Blue/green deployments (nova version para todos mas antiga continua aa funcionar se for necessario voltar a atras é possivel)
+
+Convention over configuration
+
+paradigma de design que agrega as principais configs de software em convençoes que podem ser utilizadas durante o desenvolvimento (permite acelerar o processo de develop ao evitar definir prefs)
+exemplo: ao usar packages sabes como funciona mas nao se configura nada
+
+Beneficios das DevOps
+
+Velocidade (maior rapiddez de desenvolvimento à operação)
+Fiabilidade (pipeline integrado e automatizado)
+Escalabilidade (Mudanças no sist refletem-se nos em pequenas mudanças nos files de config)
+Colaboração (responsabilidade partilhada)
+Segurança (dentro das configs regras de seg)
+
+CALMS
+
+culture (team over induvidual)
+automation 
+lean (minimalistic)
+measurements (data in everything)
+sharing (colaboraçao)
+
+REVER PODEM FALTAR ALGUMAS CENAS !!!!!!!!!!!!!!
+--------------------------------------
+Slide 5
+
+Clean Project
+
+Arquitect-> gere a arquitetura do produto, sabe as tecnologias usadas no frontend,backend,caching, message queues etc..
+Devops-> sabe o que esta a acontecer no desenvolvimento (deployment machine, repositorio git, operaçoes da db etc) e  gere a insfraestrutura
+TeamManager-> gere a equipa e entrega o produto (representa os interesses dos investidores)
+Product owner-> mantem comunicaçao com o ciente e reporta mudannças de ideias etc do mesmo
+
+
+Software planning
+
+Specification (defeniçao daquilo que o sistema vai fazer) (user stories etc oq foi feito no github)
+Design and implementation (idk suponho q o stor meio q skipou isto)
+
+Aqui tem uma explicaçao estensa de como se deve gerir no git as sbranches etc,
+importante ter em mente dividir em pelo menos
+develop,hotfix_x,release e master
+
+---------------------------------------------------------------
+
+Slide 6
+
+arquitetura (deve ser deefinida em concordancia de todos para nao existirem divergencia entre desenvolvedores)
+
+decisoes sobre a arquitetura devem ser documentadas (esta documentaçao deve ser centralizada) (caso contrario coisas simples no futuro podem nao ser tao obvias, e podem levar a alteraçoess q vao compremeter o projeto)
+isto é defendido pelo groundhog day-antipattern
+(exemplo do pilar no meio da casa que eventualmente faz sentido ser usado se o mesmo for ignorado pode dar problemas)
+
+Padroes de  arquitetura
+
+Cliente-servidor (um para um entre cliente e servidor)
+Master-slave (parecida á anterior no numero de intervenientes mas no servidor exisste um relacionamente de master/slave interno, por ex  apps multithread ou bds de dados replicadas)
+Pipe-filter (usada por processos q usam buffering (começaa numa fonte de dados e acaba num consumidor de dados, pode usar filtros pelo meio)), ou sincronismo
+           ex: compiladores usam esta arquitetura
+MicroKernel (tem o core system e os modulos plug in o core system normalmente fornece apenas os seerviços basicos)
+           ex: vscode faz isto onde o mesmo é apenas um leitor de texto com plugins
+Arquitetura em camadas (camadas diferentes cada uma tem a sua funçao (desta forma obtem-se abstraçao onde por exemplo a camada de apresentaçao nao precisa saber como obter os dados))
+Arquitetura Event-driven (faz as coisas de forma distribuida e assincrona)
+SOA (arquitetura orientada a serviços) (baseia-se em fazer serviços standalone que podem ser reutilizados)
+          ex:login da ua que é usado em varios websites paco,etc...
+
+SOAP(protocolo baseado em xml que como é muito estandardizado foi considerado pesado e lento)
+REST(Representional State transfer)
+    (comunicaçao mais simples em relaçao ao anterior, usa endpoints http mas tem algumas desvantagens como por exemplo apresentar objetos complexos, a necesssidade de documentar as interfaces
+    e a necessidade de implementar sistemas adicionais para a segurança etc.)
+
+//falta uma aqui mas nao percebi muito bem
+
+Arquitetura de micro-serviços (deploy de unidades separadas,cada componente presta um serviço (pode ser simples ou relativamente complexo))
+      !!! é preciso ter atençao a na ter demasiada granularidade
+
+Arquitetura Space Based ou Cloud Arquiteture (criada para resolver s problemas de escabiliadde e concorrencia que exitem em aplicaçoes)
+        ex:redes socias/amazon com muito ou pouco trafego
+
+
+----------------------------------------
+Slide 7
+
+paginas web de hoje em dia mudaram de paginas estaticas (codigo prefeito no servidor) para as dinamicas onde o
+conteudo das paginas é gerado dinamicamente (ex angular, django) (programaçao server-side/backend)
+
+ter backend nos svs web trouxe varias vantagens (as computaçao pesada pode ser feita num servidor mais potente,mais segurança etc..)
+
+GCI (Common Gateway interface) (executa a app no sv e gera a pagina web atraves do url)
+ASP/JSP (encapssulamento de codigo de linguagens de prog direto no html) ex:DJANGO com template tags
+
+Frameworks (esqueletos para a criaçaao de apps (springinitiaalizer usa a framework spring))
+
+Framework sao muito diferentes de bibliotecas (nós chamamos bibliotecas as frameworks chama-nos a nós)
+
+Client-Side framework (react e angular)
+Server-side 
+      Micro (sao focadas em pedidos HTTPS)
+      Full-stack (Spring + thymeleaf (spring abstrai o acesso á bd e thymeleaf para uso de templates))
+      Component (Livrarias especializadas e com um unico proposito que em conjunto podem fazer uma framework) (react inicialmente era uma livrariaa client side)
+
+Core Componentes
+  Roteamento (pedidos paara o codigo que os deve pocessar)
+  Mecanismos de template separam a logica da apresentaçao
+  Acesso aos dados de forma abstrata
+  etc....
+
+Independencia dos dados
+
+independencia logica (alteraçao do esquema logico sem ter de alterar o esquema externo)
+independencia fisica (alteraçao do esquema fisico nao altera o esquema logico)
+
+Arquiteturas
+
+Arquitetura em camadas (apresentaçao, logica e dados)
+MVC (Model-view-Controller) (o nome diz tudo)
+
+IOC (inversao de controlo) framework passa a ser responsavel pela criaçao dos objetos
+em spring tem o @Component e @Beans, @Repository etc
+
+Beans(idk n peercebi isto muito bem)
+
+SpEL (Spring expression languages) (manipulaçao de querys apenas com o spring)
+AOP (Aspect oriented Programming) (separaao de responsabilidade de forma a melhorara a modularidade, é uma especies de decorador dinamico)
+join-point ->	realiza aspects -> pelos pointcut
+
+Tem mais um slide mas ignorei por enquanto !!!!!!!
+---------------------------
+
+
+Slide 8
+
+SpringBoot é uma extensao da framwork Spring que permite ter um desenvolvimento mais agil e eficiente, o mesmo ja tem configuraçoes pre-feitas , destaca-se tambem pelo servidor pre-embutido que o mesmo tem
+
+Principais componentes
+Spring initialzr-pensar na cena web q foi usada na aula
+Starters-varias dependecias combinadas em uma
+AutoConfigurator-o nome diz tudo
+CLI-correr comandos no terminal
+Actuator-endpoints e metricas
+
+Spring WebFlux, operece um modelo assincrono isto é o sistema nao bloquei enquanto espera por uma resposta
+
+MVC-usado mais em bases de dados relacionais
+Flux-NoSQL
+
+
+Spring Data
+
+JPA-norma para modelos de mapeamento entre java e as bds
+Hibernate-implementaçao do JPA para mapear objetos em tabelas de bds relacionais etc..
+Spring Data JPA-utilitario sobre o JPA, com novaa camada onde existem repositorios sem codigo
+
+Em relacoes one to many o mapped fica sempre no elemento q é owned
+
+Menciona fazer os reps ao usar o mongo é similar muda algumas coisas por exemplo o table passa para document etc..
+
+
+
+-------------------------------
+
+Slide 9
+
+Micro-serviços -> aplicaçoes nativas da nuvem, compostas por peças pequenas, independentes, substituiveis, poliglotas etc..
+tem varias boas praticas associadas a si 
+processos independentes, concorencia dos serviços atraves de escalada horizontal, processos descartaveis
+
+Estrutura interna
+
+normalmente um micro serviço é como uma pequena aplicaçao, tem os seus varios compomentes
+quase sempre tem a uma base de dados exclusiva logo os restantes micro-serviços nao têm acesso á mesma
+
+Microserviços em java
+
+temos o spring cloud oferece mecanismos de load balace,redundancia problemas de performance e complexidade de deploy e reduz a complexidade de serviços associados ao sd
+
+tem uma servidor de nomes eureka que permite o registo de seerviços da app
+
+Controlo de versoes e dependencias
+
+so declarar direito e ta bom
+
+Identificaçaao de serviços
+
+Swagger api faz isto bastante bem
+
+Criaçao de API REST
+
+cenas normais ...
+
+Serviços de localizaçao
+
+escala horizontal (multiplicaçao de serviços) tras problemas de distribuiçao de trabalho entre vvarias instancias
+
+pode entao fazer:
+registo e deregisto-(estou disponivel ou nao)
+heartbeats-(serviço ainda up)
+descoberta de serviço-(procura de outro serviços)
+
+o registo pode ser feito por ele proprio ou por terceiros
+utilizar terceiros implica estar sempre a atualizar o estado dos serviços
+
+Tolerancia a falhas 
+
+timeout
+circuit breakers (muitos timeouts passa a assumir que o endpoint nao da e nao manda mais pedidos)
+bulkheads (em caso de erro nao para a execuçao do prog)
+consumir dados da api (validar dados, ignorar o q nao é necessario isto é se precisa-se dos obrigatorios os outro tanto faz)
+fornecer dados da api (responder apenas com o necessario)
+ 
+-------------------------------------
+
+Slide 12
+OWASP (associaçao com lista de coisas importantes a fazer (pensar em sio))
+
+Security shift
+
+shift left (prevenir/impedir que aconteçam problemas de segurança por design)
+ 	falha normalmente por demorar muito a criar nao se nota tao facilmente, retira performance
+shift right (reaçam a vulnerabilidades)
+
+CWE (Common Weakness Enumeration) enumera anti-padroes que levam a fraquezas
+
+OWASP TOP 10
+riscos mais frequentes nas aplicaçoes (nao sao normas apenas recomendaçoes)
+
+ASVS (Aplication Security Verification Standard)
+é baseado em boas praticas e em standars ja existentes
+tem varios nives 0-3
+aplicaçoes no nivel 0 nao seguem as melhores praticas
+nivel 1 -minimo para qualquer aplicaçao
+nivel 2 bom para qualquer app
+nivel 3 necessario para aplicaçoes criticas (com dados sensiveis)
+	
+
+--------------------------
+
+Slide 13
+
+É mencionado um monte de cenas em relaçao a monotorizaçao, de forma a permitir melhorias de segurança e talvez ate de receita (EX: na amazon 0.1 ms de improvement de load corresponded a 1% de aumento de vendas) isto para dizer que isto
+tem muita complexidade e se abordado de forma correta trás muitos beneficios
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
